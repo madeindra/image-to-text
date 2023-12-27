@@ -10,5 +10,5 @@ insert_final_newline = true
 
 # Indentation override for all TS under src directory
 [src/**.ts]
-indent_style = tab
-indent_size = 1
+indent_style = space
+indent_size = 2
