@@ -132,3 +132,6 @@ dist
 # lockfile
 package-lock.json
 pnpm-lock.yaml
+
+# tesseract data
+*.traineddata
