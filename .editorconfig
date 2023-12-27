@@ -8,7 +8,8 @@ root = true
 end_of_line = lf
 insert_final_newline = true
 
-# Indentation override for all TS under src directory
-[src/**.ts]
+# Indentation and quote override for all TS file
+[*.{ts}]
 indent_style = space
 indent_size = 2
+quote_type = single
