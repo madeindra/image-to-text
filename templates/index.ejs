@@ -1,41 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>OCR App</title>
 
-  <link href="/bootstrap.min.css" rel="stylesheet">
-  <link href="/index.css"rel="stylesheet">
+  <link href="/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-n8Y/JJLqKoftErk/S6vn+OQ2Uc9LSclD8twqxiOCyOo8JwgmwRnX+64SWlS5dG29" crossorigin="anonymous">
 </head>
 
 <body>
-  <div class="container mt-5">
-    <div class="row align-items-center">
-  
-      <div id="static" class="card col p-3 mx-3" style="height: 50vh;">
-        <h1>Select Image</h1>
-        <form id="uploader" enctype="multipart/form-data">
-          <div class="input-group">
-            <input class="form-control"  type="file" name="image" id="fileInput">
-            <button class="btn btn-outline-primary" type="submit">Upload</button>
+  <div class="container">
+    <main class="mx-auto my-5">
+      <div class="row">
+        <!-- Upload Form -->
+        <div class="card col mx-3">
+          <h1 class="my-3 fw-light">Select Image</h1>
+          <form id="uploader" enctype="multipart/form-data">
+            <div class="input-group">
+              <input class="form-control" type="file" name="image" id="fileInput">
+              <button class="btn btn-outline-light" id="submit" type="submit">Upload</button>
+            </div>
+          </form>
+
+          <img class="img-fluid my-3" id="preview" />
+        </div>
+
+        <!-- Result Box -->
+        <div class="card col mx-3">
+          <h1 class="my-3 fw-light">OCR Result</h1>
+          <div id="result" class="fw-light"></div>
+
+          <div id="resultSpinner" class="d-flex justify-content-center invisible">
+            <div class="spinner-border" role="status">
+            </div>
           </div>
 
-        </form>
-
-        <img id="preview" />
+        </div>
       </div>
-      
-      <div class="card col p-3 mx-3" style="height: 50vh;">
-        <h1>OCR Result</h1>
-        <div id="result"></div>
-      </div> 
+    </main>
 
-    </div>
+    <footer class="my-5 text-body-secondary text-center text-small">
+      <p class="mb-1">© <%=new Date().getFullYear()%> Made Indra</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a class="link-light link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+            href="https://madecanggih.dev">Blog</a></li>
+        <li class="list-inline-item"><a class="link-light link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+            href="https://github.com/madeindra">GitHub</a></li>
+        <li class="list-inline-item"><a class="link-light link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+            href="https://linkedin.com/in/mdeindra/">LinkedIn</a></li>
+      </ul>
+    </footer>
   </div>
 
-  <script src="/bootstrap.bundle.min.js"></script>
+
+  <script src="/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
   <script src="/index.js"></script>
 </body>
 
