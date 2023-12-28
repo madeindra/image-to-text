@@ -22,5 +22,6 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-    }
+    },
+    "ignorePatterns": ['dist/', 'public/', 'templates/', '.eslintrc.js']
 }
