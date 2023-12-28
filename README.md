@@ -2,6 +2,8 @@
 
 Simple Image to Text using Tesseract.js for the OCR.
 
+![preview](https://raw.githubusercontent.com/madeindra/image-to-text/master/preview.png "preview")
+
 ## Installation
 
 1. Clone the repository
