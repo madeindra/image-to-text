@@ -1,9 +1,14 @@
 // import modules
 import fastify from 'fastify'
 import { fastifyMultipart } from '@fastify/multipart'
+import { fastifyStatic } from '@fastify/static'
+import { fastifyView } from '@fastify/view'
+import { Eta } from 'eta'
+import path from 'path'
 
 // import controllers
-import ocrController from './controllers/ocrController'
+import homepageController from './controllers/homepage'
+import ocrController from './controllers/recognize'
 
 // import utilities
 import { getHost, getPort } from './utils/env'
@@ -20,7 +25,21 @@ async function init (): Promise<void> {
     }
   })
 
+  // register static files for homepage assets
+  await app.register(fastifyStatic, {
+    root: path.join(__dirname, '../public'),
+    prefix: '/'
+  })
+
+  // register template engine
+  await app.register(fastifyView, {
+    // eslint-disable-next-line
+    engine: { eta: new Eta() },
+    templates: path.join(__dirname, '../templates')
+  })
+
   // register routes
+  await app.register(homepageController)
   await app.register(ocrController)
 
   await app.ready()
