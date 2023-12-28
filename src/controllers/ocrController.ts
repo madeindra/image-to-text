@@ -1,5 +1,5 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
-import { createWorker } from 'tesseract.js'
+import { recognize } from '../utils/ocr'
 
 export default function ocrController (
   app: FastifyInstance,
@@ -29,16 +29,12 @@ export default function ocrController (
         })
       }
 
-      // recognize the text from the image using worker
-      const worker = await createWorker('eng')
-      const { data: { text } } = await worker.recognize(buffer)
-
-      // terminate the worker
-      await worker.terminate()
+      // recognize the text
+      const text = await recognize('eng', buffer)
 
       // send the response
       return await reply.code(200).send({
-        message: 'Recognized text successfully',
+        message: 'Image to text conversion completed',
         data: {
           text
         }
