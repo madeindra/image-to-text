@@ -7,7 +7,6 @@
   <title>OCR App</title>
 
   <link href="/bootstrap.min.css" rel="stylesheet">
-    
   <link href="/index.css"rel="stylesheet">
 </head>
 
@@ -30,56 +29,14 @@
       
       <div class="card col p-3 mx-3" style="height: 50vh;">
         <h1>OCR Result</h1>
-        <div id="app"></div>
+        <div id="result"></div>
       </div> 
 
     </div>
   </div>
 
   <script src="/bootstrap.bundle.min.js"></script>
-
-  <script>
-    const App = () => {
-      return `
-        ${App.state.result}  
-      `;
-    }
-
-    App.state = {
-      result: "",
-    };
-
-    const setState = (name, value) => {
-      App.state[name] = value;
-      rerender();
-    }
-
-    const rerender = () => {
-      document.getElementById('app').innerHTML = App();
-    }
-
-    const initialize = () => {
-      const uploaderForm = document.getElementById('uploader');
-
-      uploaderForm.onchange = (ev) => {
-        document.getElementById('preview').src = URL.createObjectURL(ev.target.files[0]);
-      };
-
-      uploaderForm.onsubmit = async (ev) => {
-        ev.preventDefault();
-
-        const body = new FormData(uploaderForm);
-        const response = await fetch("/recognize", { method: "POST", body });
-
-        if (response) {
-          const resBody = await response.json();
-          setState('result', resBody.data.text);
-        }
-      };
-    }
-
-    initialize();
-  </script>
+  <script src="/index.js"></script>
 </body>
 
 </html>

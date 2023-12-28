@@ -1,22 +1,23 @@
-const express = require('express');
-const cors = require('cors');
-const multer = require('multer');
-const path = require('path');
+const uploaderForm = document.getElementById('uploader');
 
-const tesseract = require('tesseract.js');
+uploaderForm.onchange = (ev) => {
+  document.getElementById('preview').src = URL.createObjectURL(ev.target.files[0]);
+};
 
-const app = express();
-app.use(cors());
+uploaderForm.onsubmit = async (ev) => {
+  ev.preventDefault();
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+  // create request body from the form (already set as multipart/form-data)
+  const body = new FormData(uploaderForm);
 
-app.post('/upload', multer().single('image'), async (req, res) => {
-  const worker = await tesseract.createWorker('eng');
-  const { data: { text }} = await worker.recognize(req.file.buffer);
+  // send the request
+  const response = await fetch("/recognize", { method: "POST", body });
 
-  console.log(text);
+  if (response) {
+    // parse the response
+    const resBody = await response.json();
 
-  return res.send({ result: text });
-});
-
-app.listen(3000, () => console.log('Server started on port 3000'));
+    // update the result
+    document.getElementById('result').innerText = resBody.data.text;
+  }
+};
