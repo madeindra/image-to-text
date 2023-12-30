@@ -1,5 +1,8 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify'
+import type { MultipartValue } from '@fastify/multipart'
+
 import { recognize } from '../utils/ocr'
+import { isEmpty } from '../utils/check'
 
 export default function ocrController (
   app: FastifyInstance,
@@ -27,8 +30,11 @@ export default function ocrController (
       })
     }
 
+    // get the language selected by the user
+    const lang = !isEmpty((data.fields?.language as MultipartValue)?.value) ? (data.fields.language as MultipartValue).value : 'eng'
+
     // recognize the text
-    const text = await recognize('eng', buffer)
+    const text = await recognize(lang as string, buffer)
 
     // send the response
     return await reply.code(200).send({

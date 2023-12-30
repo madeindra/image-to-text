@@ -38,7 +38,7 @@ npm start
 
 2. Select your image file (try `sample.png` from this repository)
 
-3. Click `Upload` button
+3. Click `Read Image` button
 
 4. Result will be shown in the textarea
 
@@ -56,7 +56,7 @@ file: yourimagefile
 
 ## TODOs
 - [X] Homepage
-- [ ] Multiple language support
+- [X] Multiple language support
 - [ ] Adjust image adjustment before OCR
 - [ ] Docker support
 - [ ] Testings

@@ -17,12 +17,32 @@
       <div class="row">
         <!-- Upload Form -->
         <div class="card col mx-3">
-          <h1 class="my-3 fw-light">Select Image</h1>
+          <h1 class="my-3 fw-light">Image Input</h1>
           <form id="uploader" enctype="multipart/form-data">
-            <div class="input-group">
+            <div class="mb-3">
+              <label for="fileInput" class="form-label fw-medium">Upload Image</label>
               <input class="form-control" type="file" name="image" id="fileInput">
-              <button class="btn btn-outline-light" id="submit" type="submit">Upload</button>
             </div>
+            <div class="mb-3">
+              <label for="languageInput" class="form-label fw-medium">Choose Language</label>
+              <select class="form-select" name="language" id="languageInput">
+                <option value="eng" selected>English</option>
+                <option value="chi_sim">Chinese - Simplified</option>
+                <option value="chi_tra">Chinese - Traditional</option>
+                <option value="fra">French</option>
+                <option value="deu">German</option>
+                <option value="ind">Indonesian</option>
+                <option value="ita">Italian</option>
+                <option value="jav">Javanese</option>
+                <option value="jpn">Japanese</option>
+                <option value="kor">Korean</option>
+                <option value="lat">Latin</option>
+                <option value="msa">Malay</option>
+                <option value="por">Portuguese</option>
+                <option value="rus">Russian</option>
+              </select>
+            </div>
+            <button class="btn btn-outline-primary" id="submit" type="submit">Read Image</button>
           </form>
 
           <img class="img-fluid my-3" id="preview" />
