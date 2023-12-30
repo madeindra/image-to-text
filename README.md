@@ -51,7 +51,8 @@ POST /recognize
 ```
 form/multipart-data
 
-file: yourimagefile
+image: yourimagefile
+lanaguage: eng
 ```
 
 ## TODOs
