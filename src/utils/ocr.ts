@@ -6,11 +6,11 @@ export async function recognize (lang: string, image: string | Buffer): Promise<
   const worker = await createWorker(lang)
 
   // recognize the text from the image
-  const { data: { text } } = await worker.recognize(image)
+  const result = await worker.recognize(image, { rotateAuto: true })
 
   // for single image, it should be safe to terminate the worker
   await worker.terminate()
 
   // return the recognized text
-  return text
+  return result.data.text
 }
